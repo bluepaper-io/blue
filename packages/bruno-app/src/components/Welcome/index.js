@@ -53,8 +53,13 @@ const Welcome = () => {
       <div className="">
         <Bruno width={50} />
       </div>
-      <div className="text-xl font-semibold select-none">bruno</div>
-      <div className="mt-4">Opensource IDE for exploring and testing APIs</div>
+      <div className="text-xl font-semibold select-none">Blue</div>
+      <div className="mt-4">
+        Opensource IDE for exploring and testing APIs, forked from{' '}
+        <a href="https://usebruno.com" target="_blank" className="font-semibold text-blue-400 underline">
+          Bruno
+        </a>
+      </div>
 
       <div className="uppercase font-semibold heading mt-10">Collections</div>
       <div className="mt-4 flex items-center collection-options select-none">
@@ -85,13 +90,13 @@ const Welcome = () => {
           </a>
         </div>
         <div className="mt-2">
-          <a href="https://github.com/usebruno/bruno/issues" target="_blank" className="inline-flex items-center">
+          <a href="https://github.com/bluepaper-io/blue/issues" target="_blank" className="inline-flex items-center">
             <IconSpeakerphone size={18} strokeWidth={2} />
             <span className="label ml-2">Report Issues</span>
           </a>
         </div>
         <div className="mt-2">
-          <a href="https://github.com/usebruno/bruno" target="_blank" className="flex items-center">
+          <a href="https://github.com/bluepaper-io/blue" target="_blank" className="flex items-center">
             <IconBrandGithub size={18} strokeWidth={2} />
             <span className="label ml-2">GitHub</span>
           </a>

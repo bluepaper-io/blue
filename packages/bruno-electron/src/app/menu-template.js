@@ -58,10 +58,10 @@ const template = [
     role: 'help',
     submenu: [
       {
-        label: 'About Bruno',
+        label: 'About Blue',
         click: () =>
           openAboutWindow({
-            product_name: 'Bruno',
+            product_name: 'Blue',
             icon_path: join(__dirname, '../about/256x256.png'),
             css_path: join(__dirname, '../about/about.css'),
             homepage: 'https://www.usebruno.com/',

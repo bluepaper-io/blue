@@ -209,10 +209,11 @@ const darkTheme = {
   },
 
   codemirror: {
-    bg: '#1e1e1e',
+    bg: '#181818',
     border: '#373737',
+    color: '#ccc',
     gutter: {
-      bg: '#262626'
+      bg: '#181818'
     },
     variable: {
       valid: 'rgb(11 178 126)',
@@ -222,6 +223,9 @@ const darkTheme = {
         bg: 'rgb(48,48,49)',
         boxShadow: 'rgb(0 0 0 / 36%) 0px 2px 8px'
       }
+    },
+    scrollbar: {
+      bg: '#262626'
     }
   },
 

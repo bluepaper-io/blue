@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
   div.CodeMirror {
+    color: ${(props) => props.theme.codemirror.color};
     background: ${(props) => props.theme.codemirror.bg};
     border: solid 1px ${(props) => props.theme.codemirror.border};
     font-family: ${(props) => (props.font ? props.font : 'default')};
@@ -10,7 +11,7 @@ const StyledWrapper = styled.div`
 
   .CodeMirror-overlayscroll-horizontal div,
   .CodeMirror-overlayscroll-vertical div {
-    background: #d2d7db;
+    background: ${(props) => props.theme.codemirror.scrollbar.bg};
   }
 
   textarea.cm-editor {

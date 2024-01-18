@@ -215,6 +215,7 @@ const lightTheme = {
   codemirror: {
     bg: 'white',
     border: '#efefef',
+    color: 'rgb(52, 52, 52)',
     gutter: {
       bg: '#f3f3f3'
     },
@@ -226,6 +227,9 @@ const lightTheme = {
         bg: 'white',
         boxShadow: '0 1px 3px rgba(0, 0, 0, 0.45)'
       }
+    },
+    scrollbar: {
+      bg: '#262626'
     }
   },
 
