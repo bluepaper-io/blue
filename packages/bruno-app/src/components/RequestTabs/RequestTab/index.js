@@ -89,7 +89,16 @@ const RequestTab = ({ tab, collection }) => {
   const method = item.draft ? get(item, 'draft.request.method') : get(item, 'request.method');
 
   return (
-    <StyledWrapper className="flex items-center justify-between tab-container px-1">
+    <StyledWrapper
+      className="flex items-center justify-between tab-container px-1"
+      onAuxClick={(e) => {
+        if (!item.draft) return handleCloseClick(e);
+
+        e.stopPropagation();
+        e.preventDefault();
+        setShowConfirmClose(true);
+      }}
+    >
       {showConfirmClose && (
         <ConfirmRequestClose
           item={item}
