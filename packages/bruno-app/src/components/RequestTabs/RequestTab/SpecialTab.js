@@ -32,7 +32,7 @@ const SpecialTab = ({ handleCloseClick, type }) => {
   };
 
   return (
-    <>
+    <div className="flex items-center" onAuxClick={(e) => handleCloseClick(e)}>
       <div className="flex items-center tab-label pl-2">{getTabInfo(type)}</div>
       <div className="flex px-2 close-icon-container" onClick={(e) => handleCloseClick(e)}>
         <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="close-icon">
@@ -42,7 +42,7 @@ const SpecialTab = ({ handleCloseClick, type }) => {
           ></path>
         </svg>
       </div>
-    </>
+    </div>
   );
 };
 

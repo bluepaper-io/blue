@@ -94,12 +94,6 @@ const RequestTabs = () => {
                   </div>
                 </li>
               ) : null}
-              {/* Moved to post mvp */}
-              {/* <li className="select-none new-tab mr-1" onClick={createNewTab}>
-                <div className="flex items-center home-icon-container">
-                  <IconHome2 size={18} strokeWidth={1.5}/>
-                </div>
-              </li> */}
             </ul>
             <ul role="tablist" style={{ maxWidth: maxTablistWidth }} ref={tabsRef}>
               {collectionRequestTabs && collectionRequestTabs.length
