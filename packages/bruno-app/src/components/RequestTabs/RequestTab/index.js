@@ -151,6 +151,7 @@ const RequestTab = ({ tab, collection }) => {
           e.preventDefault();
           setShowConfirmClose(true);
         }}
+        title={!item.draft ? 'Close (Ctrl+W)' : 'Unsaved changes (Ctrl+S)'}
       >
         {!item.draft ? (
           <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" className="close-icon">
