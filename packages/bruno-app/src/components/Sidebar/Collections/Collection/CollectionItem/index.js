@@ -224,7 +224,10 @@ const CollectionItem = ({ item, collection, searchText }) => {
                     onClick={handleClick}
                     onContextMenu={handleRightClick}
                     onDoubleClick={handleDoubleClick}
-                    onAuxClick={handleClick}
+                    onAuxClick={(e) => {
+                      if (e.button !== 1) return;
+                      handleClick(e);
+                    }}
                     className="indent-block"
                     key={i}
                     style={{
@@ -242,7 +245,10 @@ const CollectionItem = ({ item, collection, searchText }) => {
             onClick={handleClick}
             onContextMenu={handleRightClick}
             onDoubleClick={handleDoubleClick}
-            onAuxClick={handleClick}
+            onAuxClick={(e) => {
+              if (e.button !== 1) return;
+              handleClick(e);
+            }}
             className="flex flex-grow items-center h-full overflow-hidden"
             style={{
               paddingLeft: 8

@@ -71,7 +71,7 @@ const RequestTab = ({ tab, collection }) => {
   if (['collection-settings', 'variables', 'collection-runner'].includes(tab.type)) {
     return (
       <StyledWrapper className="flex items-center justify-between tab-container px-1">
-        <SpecialTab handleCloseClick={handleCloseClick} type={tab.type} />
+        <SpecialTab handleCloseClick={handleCloseClick} type={tab.type} name={collection.name} />
       </StyledWrapper>
     );
   }
@@ -92,6 +92,7 @@ const RequestTab = ({ tab, collection }) => {
     <StyledWrapper
       className="flex items-center justify-between tab-container px-1"
       onAuxClick={(e) => {
+        if (e.button !== 1) return;
         if (!item.draft) return handleCloseClick(e);
 
         e.stopPropagation();

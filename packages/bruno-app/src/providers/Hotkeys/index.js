@@ -7,9 +7,10 @@ import SaveRequest from 'components/RequestPane/SaveRequest';
 import EnvironmentSettings from 'components/Environments/EnvironmentSettings';
 import NetworkError from 'components/ResponsePane/NetworkError';
 import NewRequest from 'components/Sidebar/NewRequest';
+import { uuid } from 'utils/common';
 import { sendRequest, saveRequest } from 'providers/ReduxStore/slices/collections/actions';
-import { findCollectionByUid, findItemInCollection } from 'utils/collections';
-import { closeTabs } from 'providers/ReduxStore/slices/tabs';
+import { findCollectionByUid, findItemInCollection, getDefaultRequestPaneTab } from 'utils/collections';
+import { addTab, closeTabs } from 'providers/ReduxStore/slices/tabs';
 
 export const HotkeysContext = React.createContext();
 
@@ -112,9 +113,9 @@ export const HotkeysProvider = (props) => {
     };
   }, [activeTabUid, tabs, collections, setShowEnvSettingsModal]);
 
-  // new request (ctrl/cmd + b)
+  // new request (ctrl/cmd + n)
   useEffect(() => {
-    Mousetrap.bind(['command+b', 'ctrl+b'], (e) => {
+    Mousetrap.bind(['command+n', 'ctrl+n'], (e) => {
       const activeTab = find(tabs, (t) => t.uid === activeTabUid);
       if (activeTab) {
         const collection = findCollectionByUid(collections, activeTab.collectionUid);
@@ -122,13 +123,23 @@ export const HotkeysProvider = (props) => {
         if (collection) {
           setShowNewRequestModal(true);
         }
+      } else {
+        dispatch(
+          addTab({
+            uid: uuid(),
+            collectionUid: collections[0].uid,
+            type: 'collection-settings'
+          })
+        );
+
+        setShowNewRequestModal(true);
       }
 
       return false; // this stops the event bubbling
     });
 
     return () => {
-      Mousetrap.unbind(['command+b', 'ctrl+b']);
+      Mousetrap.unbind(['command+n', 'ctrl+n']);
     };
   }, [activeTabUid, tabs, collections, setShowNewRequestModal]);
 
@@ -148,6 +159,22 @@ export const HotkeysProvider = (props) => {
       Mousetrap.unbind(['command+w', 'ctrl+w']);
     };
   }, [activeTabUid]);
+
+  useEffect(() => {
+    Mousetrap.bind(['command+shift+w', 'ctrl+shift+w'], (e) => {
+      dispatch(
+        closeTabs({
+          tabUids: tabs.map((t) => t.uid)
+        })
+      );
+
+      return false; // this stops the event bubbling
+    });
+
+    return () => {
+      Mousetrap.unbind(['command+shift+w', 'ctrl+shift+w']);
+    };
+  });
 
   return (
     <HotkeysContext.Provider {...props} value="hotkey">
