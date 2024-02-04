@@ -12,6 +12,13 @@ const stripLastLine = (text) => {
   return text.replace(/(\r?\n)$/, '');
 };
 
+// add spaces around the environment variables, i.e. {{url}} => {{ url }}, only if they don't exist
+const formatUrl = (url) => {
+  if (!url || !url.length) return url;
+
+  return url.replace(/{{(?! )/g, '{{ ').replace(/(?! )}}/g, ' }}');
+};
+
 const jsonToBru = (json) => {
   const { meta, http, query, headers, auth, body, script, tests, vars, assertions, docs } = json;
 
@@ -27,7 +34,7 @@ const jsonToBru = (json) => {
 
   if (http && http.method) {
     bru += `${http.method} {
-  url: ${http.url}`;
+  url: ${formatUrl(http.url)}`;
 
     if (http.body && http.body.length) {
       bru += `
