@@ -16,7 +16,7 @@ const stripLastLine = (text) => {
 const formatUrl = (url) => {
   if (!url || !url.length) return url;
 
-  return url.replace(/{{(?! )/g, '{{ ').replace(/(?! )}}/g, ' }}');
+  return url.replace(/{{\s*([^}]*?)\s*}}/g, '{{ $1 }}').trim();
 };
 
 const jsonToBru = (json) => {
