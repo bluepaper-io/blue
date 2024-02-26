@@ -188,18 +188,25 @@ ${indentString(body.sparql)}
 
   if (body && body.multipartForm && body.multipartForm.length) {
     bru += `body:multipart-form {`;
-    if (enabled(body.multipartForm).length) {
-      bru += `\n${indentString(
-        enabled(body.multipartForm)
-          .map((item) => `${item.name}: ${item.value}`)
-          .join('\n')
-      )}`;
-    }
+    const multipartForms = enabled(body.multipartForm).concat(disabled(body.multipartForm));
 
-    if (disabled(body.multipartForm).length) {
+    if (multipartForms.length) {
       bru += `\n${indentString(
-        disabled(body.multipartForm)
-          .map((item) => `~${item.name}: ${item.value}`)
+        multipartForms
+          .map((item) => {
+            const enabled = item.enabled ? '' : '~';
+
+            if (item.type === 'text') {
+              return `${enabled}${item.name}: ${item.value}`;
+            }
+
+            if (item.type === 'file') {
+              let filepaths = item.value || [];
+              let filestr = filepaths.join('|');
+              const value = `@file(${filestr})`;
+              return `${enabled}${item.name}: ${value}`;
+            }
+          })
           .join('\n')
       )}`;
     }
