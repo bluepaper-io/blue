@@ -102,8 +102,8 @@ const Sidebar = () => {
                 />
               </div>
               <div className="pl-1" style={{ position: 'relative', top: '3px' }}></div>
-              <div className="flex flex-grow items-center justify-end text-xs mr-2">Blue v0.2.0</div>
-              <div className="flex flex-grow items-center justify-end text-xs mr-2">Bruno v1.6.1</div>
+              <div className="flex flex-grow items-center justify-end text-xs mr-2">Blue v0.2.1</div>
+              <div className="flex flex-grow items-center justify-end text-xs mr-2">Bruno v1.7.1</div>
             </div>
           </div>
         </div>

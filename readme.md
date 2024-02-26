@@ -17,7 +17,7 @@ You can use Git or any version control of your choice to collaborate over your A
 
 Blue is available as binary download [on our website](https://www.usebruno.com/downloads) for Mac, Windows and Linux.
 
-You can also install Bruno via package managers like Homebrew, Chocolatey, Scoop, Snap and Apt.
+You can also install Bruno via package managers like Homebrew, Chocolatey, Scoop, Snap, Flatpak and Apt.
 
 ```sh
 # On Mac via Homebrew
@@ -32,6 +32,9 @@ scoop install bruno
 
 # On Linux via Snap
 snap install bruno
+
+# On Linux via Flatpak
+flatpak install com.usebruno.Bruno
 
 # On Linux via Apt
 sudo mkdir -p /etc/apt/keyrings
